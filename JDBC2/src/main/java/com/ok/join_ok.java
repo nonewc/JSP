@@ -39,8 +39,17 @@ public class join_ok extends HttpServlet {
 			String gender = request.getParameter("gender");
 			
 		
-		// 2. DB 연동 (변수 선언.. 객체 생성..)
+		//DAO 객체 생성
+		MemberDAO dao = MemberDAO.getInstance();
+		//VO 객체 생성
+		MemberVO vo = new MemberVO(id, pw, name, phone1, phone2, email, gender);
+		
+		//DAO에 join 메서드 사용
+		int result = dao.join(vo);
+		
 			
+		// 2. DB 연동 (변수 선언.. 객체 생성..)
+			/*
 			String url = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 			String driver = "oracle.jdbc.driver.OracleDriver";
 			String uid = "myjsp";
@@ -70,6 +79,9 @@ public class join_ok extends HttpServlet {
 				
 				//int result = stmt.executeUpdate(sql);
 				int result = pstmt.executeUpdate();
+				*/
+				
+				
 				
 				if (result == 1) {
 					System.out.println("등록 성공");
@@ -78,6 +90,8 @@ public class join_ok extends HttpServlet {
 					System.out.println("등록 실패");
 					response.sendRedirect("join_fail.jsp");
 				}
+				
+				/*
 			} catch(ClassNotFoundException cnfe) {
 				System.out.println("드라이버 연결 실패 : "+cnfe.toString());
 				
@@ -96,7 +110,9 @@ public class join_ok extends HttpServlet {
 					
 				}
 			}
-		
+		*/
+				
+				
 		/* 3. 처리 결과에 따른 뷰 (view)
 		 *  성공 : Success -> 성공 메세지를 출력하는 페이지 연결
 		 *  실패 : Fail -> 실패 메세지 전송하고 다시 회원가입 페이지

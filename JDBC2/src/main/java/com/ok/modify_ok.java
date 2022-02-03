@@ -32,6 +32,19 @@ public class modify_ok extends HttpServlet {
 		
 		String id = (String)session.getAttribute("user_id");
 		
+		
+		MemberDAO dao = MemberDAO.getInstance();
+		
+		//getInfo()의 실행결과를 vo에 받게 처리
+		MemberVO vo = dao.getInfo(id);
+		
+		//vo객체를 update.jsp에게 포워드 처리
+		request.setAttribute("vo", vo);
+		request.getRequestDispatcher("update.jsp").forward(request, response);
+		
+		
+		
+		/*
 		String url = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String user = "myjsp";
@@ -59,7 +72,7 @@ public class modify_ok extends HttpServlet {
 			 *
 			 */
 			
-			
+		/*	
 			if (rs.next()) {
 				
 				String pw = rs.getString("pw");
@@ -112,7 +125,7 @@ public class modify_ok extends HttpServlet {
 			
 		}
 		
-		
+	*/
 		
 		
 	}

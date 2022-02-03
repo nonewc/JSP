@@ -35,10 +35,28 @@ public class login_ok extends HttpServlet {
 		String id = request.getParameter("id");
 		String pw = request.getParameter("pw");
 	
+		//DAO 객체 생성
+		MemberDAO dao = MemberDAO.getInstance();
+				
+				//DAO에 join 메서드 사용
+		int result = dao.login(id, pw);
+		
+		if (result == 1) {
+			
+			HttpSession session = request.getSession();
+			
+			session.setAttribute("user_id", id); // 이렇게도 되고
+			session.setAttribute("user_name", result); //이렇게도 돼
+			
+			response.sendRedirect("mypage.jsp");
+		} else {
+			response.sendRedirect("login_fail.jsp");
+		}
+		
 
 		// DB연동을 위한 변수 및 객체 생성
 
-		String url = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
+		/*String url = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String user = "myjsp";
 		String password = "myjsp";
@@ -62,7 +80,7 @@ public class login_ok extends HttpServlet {
 
 			// 4. 쿼리 실행
 			rs = pstmt.executeQuery();
-
+	
 			if (rs.next()) {
 				// 아이디 패스워드 일치, 로그인 성공
 				
@@ -77,6 +95,7 @@ public class login_ok extends HttpServlet {
 				// 로그인 실패시 - 아이디 혹은 비밀번호가 틀린 경우
 				response.sendRedirect("login_fail.jsp");
 			}
+		
 
 		} catch (ClassNotFoundException cnfe) {
 
@@ -105,8 +124,9 @@ public class login_ok extends HttpServlet {
 			} catch (Exception e2) {
 
 			}
-		}
+		}*/
 
 	}
+	
 
 }

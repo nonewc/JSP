@@ -38,13 +38,35 @@ public class update_ok extends HttpServlet {
 		String email = request.getParameter("email");
 		String gender = request.getParameter("gender");
 		
-		System.out.println(id);
-		System.out.println(pw);
-		System.out.println(name);
-		System.out.println(phone1);
-		System.out.println(phone2);
-		System.out.println(email);
-		System.out.println(gender);
+		
+		/*
+		 *  1. 폼 데이터 값을 VO에 저장
+		 *  2. DAO 객체를 생성하고, update메서드로 vo개게를 전달
+		 *  3. update 메서드 안에서는 executeUpdate()메서드로 실행
+		 *  	1을 반환하면 update_success.jsp로 이동
+		 *  	0을 반환하면 mypage.jsp로 이동
+		 *  
+		 * 
+		 * 
+		 */
+		
+		MemberVO vo = new MemberVO(id, pw, name, phone1, phone2, email, gender);
+		MemberDAO dao = MemberDAO.getInstance();
+		
+		int result = dao.Update(vo);
+		
+		if (result == 1) {
+			System.out.println("수정 성공");
+			response.sendRedirect("update_success.jsp");
+		} else {
+			System.out.println("수정 실패");
+			response.sendRedirect("update_fail.jsp");
+		}	
+		
+		
+		
+		
+		/*
 		
 		String url = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 		String driver = "oracle.jdbc.driver.OracleDriver";
@@ -97,7 +119,7 @@ public class update_ok extends HttpServlet {
 			}
 			
 		}
-		
+		*/
 	}
-
+	
 }
