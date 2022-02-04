@@ -24,8 +24,20 @@ public class delete_ok extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("user_id");
-		System.out.println(id);
 		
+		MemberDAO dao = MemberDAO.getInstance();
+		
+		int result = dao.delete(id);
+		
+		if (result == 1) {
+			session.invalidate();
+			response.sendRedirect("login.jsp");
+		} else {
+			response.sendRedirect("mypage.jsp");
+		}
+		
+		
+		/*
 		String url = "jdbc:oracle:thin:@localhost:1521/XEPDB1";
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String user = "myjsp";
@@ -76,6 +88,8 @@ public class delete_ok extends HttpServlet {
 			}
 			
 		}
+		*/
+		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
