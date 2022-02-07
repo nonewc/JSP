@@ -71,12 +71,31 @@
                     <li>
                         <a href="">BOARD</a>
                     </li>
+                    <!-- 
+						세션이 없다면 로그인과 조인 메뉴로 표시                    
+                    	세션이 존재하는 경우 로그아웃과 마이페이지가 출력
+                     -->
+                     <% if (session.getAttribute("user_id") == null){ %>
+                   
                     <li>
-                        <a href="">LOGIN</a>
+                        <a href="/MyWeb/user/user_login.jsp">LOGIN</a>
                     </li>
                     <li>
-                        <a href="" style="color:red">JOIN</a>
+                        <a href="/MyWeb/user/user_join.jsp" style="color:red">JOIN</a>
                     </li>
+                    
+                    <%} else { %>
+                    
+                    <li>
+                        <a href="/MyWeb/user/user_logout.jsp">LOGOUT</a>
+                    </li>
+                    <li>
+                        <a href="/MyWeb/user/user_mypage.jsp" style="color:red">MyPage</a>
+                    </li>
+                    
+                    <%} %>
+                    
+                    
                 </ul>
             </div>
             

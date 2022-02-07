@@ -32,7 +32,7 @@
 			int result = dao.join(vo);
 			
 			if (result == 1){
-				out.println("<script>alert('회원가입을 축하합니다.'); location.href='login.jsp';</script>");
+				out.println("<script>alert('회원가입을 축하합니다.'); location.href='user_login.jsp';</script>");
 			} else {
 				out.println("<script>alert('회원가입을 실패했습니다.'); history.go(-1)';</script>");
 				
