@@ -41,7 +41,7 @@
 			session.invalidate();   //세션 삭제  %>
 			<script>
 				alert("회원 탈퇴처리가 되었습니다.");
-				location.href="/MyWeb"
+				location.href="/MyWeb2"
 			</script>			
 <% 		}
 	} 

@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
+import com.myweb.util.Criteria;
 import com.myweb.util.JdbcUtil;
 
 public class BoardDAO {
@@ -68,6 +69,8 @@ public class BoardDAO {
 		
 	}
 	
+		
+	/*
 	//게시물 목록 조회 메서드
 	public ArrayList<BoardVO> getList() {
 		ArrayList<BoardVO> list = new ArrayList<>();
@@ -91,7 +94,7 @@ public class BoardDAO {
 				 *  vo.setRegdate(rs.getTimeStamp("regdate");
 				 *  vo.setHit(rs.getInt("hit");
 				 *  
-				 */
+				 *//*
 				int num = rs.getInt("num");
 				String writer = rs.getString("writer");
 				String title = rs.getString("title");
@@ -115,6 +118,79 @@ public class BoardDAO {
 		
 		return list;
 	}
+	*/
+	
+	public ArrayList<BoardVO> getList(Criteria cri) {
+		ArrayList<BoardVO> list = new ArrayList<BoardVO>();
+		
+		String sql = "SELECT * FROM (SELECT rownum AS rnum, B.* from board B where rownum <= ? "
+				+ "order by num desc) where ? <= rnum";
+		
+		try {
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, cri.getCount_oracle()); // 몇 개의 데이터 조회 (끝)
+			pstmt.setInt(2, cri.getPageStart()); // 시작번호
+			
+			rs = pstmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				int num = rs.getInt("num");
+				String writer = rs.getString("writer");
+				String title = rs.getString("title");
+				String content = rs.getString("content");
+				Timestamp regdate = rs.getTimestamp("regdate");
+				int hit = rs.getInt("hit");
+				
+				BoardVO vo = new BoardVO(num, writer, title, content, regdate, hit);
+				
+				//생성된 vo를 리스트에 추가 
+				list.add(vo);
+			}
+					
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("여기");
+			
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		
+		return list;
+	}
+	
+	// 총 게사물 수를 반환하는 메서드
+	public int getTotal() {
+		int result = 0;
+		
+		String sql = "SELECT count(*) as total from board";
+		
+		try {
+			
+			conn = ds.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			
+			rs = pstmt.executeQuery();
+			
+			if (rs.next()) {
+				result = rs.getInt("total");
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("여기2");
+		} finally {
+			JdbcUtil.close(conn, pstmt, rs);
+		}
+		
+		
+		return result;
+	}
+	
+	
+	
 	
 	//num 을 이용한 게시글 넘기는 getContent()
 	public BoardVO getContent(String num) {
