@@ -23,8 +23,23 @@ public class MemberServiceImpl implements MemberService {
 
 	@Override
 	public int memberCheck(MemberVO vo) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int result = 0;
+		
+		for(MemberVO dbVO : memberList) {
+			if (dbVO.getId().equals(vo.getId())) {
+				String dbPw = dbVO.getPw();
+				String pw = vo.getPw();
+				
+				if(dbPw.equals(pw)) {
+					result = 1;
+				}
+			}
+		}
+		
+		return result;
 	}
+	
+	
 
 }

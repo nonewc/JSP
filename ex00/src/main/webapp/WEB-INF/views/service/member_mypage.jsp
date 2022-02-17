@@ -8,10 +8,7 @@
 </head>
 <body>
 
-	<h2> 회원가입을 축하합니다. </h2>
-	<a href="member_ex00">회원 가입 하러 가기</a>
-	<a href="member_ex03">로그인하기</a>			<!-- 컨트롤러 화면 구현 -->
-
+	<h2>${memberInfo.id }님이 로그인 중입니다.</h2>
 
 </body>
 </html>
