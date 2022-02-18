@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +8,9 @@
 </head>
 <body>
 
-	<h2> х╦©Ь╟║ютю╩ цЮгогу╢о╢ы. </h2>
-	<a href="member_ex00">х╦©Ь ╟║ют го╥╞ ╟║╠Б</a>
-	<a href="member_ex03">╥н╠вюнго╠Б</a>			<!-- даф╝╥я╥╞ х╜╦И ╠╦гЖ -->
+	<h2> М ▄Л⌡░Й╟─Л·┘Л²└ Л╤∙М∙≤М∙╘К▀┬К▀╓. </h2>
+	<a href="member_ex00">М ▄Л⌡░ Й╟─Л·┘ М∙≤К÷╛ Й╟─Й╦╟</a>
+	<a href="member_ex03">К║°Й╥╦Л²╦М∙≤Й╦╟</a>			<!-- Л╩╗М┼╦К║╓К÷╛ М≥■К╘╢ Й╣╛М≤└ -->
 
 
 </body>

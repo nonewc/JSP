@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>Àü´Ş ¹ŞÀº °ª È®ÀÎ</h2>
+	<h2>ì „ë‹¬ ë°›ì€ ê°’ í™•ì¸</h2>
 	ID : ${memId }<br>
 	PW : ${memPw }<br>
 

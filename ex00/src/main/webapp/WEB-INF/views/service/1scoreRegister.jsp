@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,18 +8,18 @@
 </head>
 <body>
 
-	<h2>Á¡¼ö ÀÔ·Â (È­¸é URL ¿äÃ» : /service/1scoreRegister)</h2>
+	<h2>ì ìˆ˜ ìž…ë ¥ (í™”ë©´ URL ìš”ì²­ : /service/1scoreRegister)</h2>
 	
-	<h2>score ÀÔ·Â</h2>
+	<h2>score ìž…ë ¥</h2>
 	<form action="scoreForm" method="post">
 	
-		ÀÌ¸§ : <input type="text" name="name"><br>
-		±¹¾î : <input type="text" name="kor"><br>
-		¿µ¾î : <input type="text" name="eng"><br>
-		¼öÇÐ : <input type="text" name="math"><br>
+		ì´ë¦„ : <input type="text" name="name"><br>
+		êµ­ì–´ : <input type="text" name="kor"><br>
+		ì˜ì–´ : <input type="text" name="eng"><br>
+		ìˆ˜í•™ : <input type="text" name="math"><br>
 	
-	<input type="submit" value="Àü¼Û">
-	<input type="button" value="¸ñ·Ï" onclick="location.href='3scoreList'">
+	<input type="submit" value="ì „ì†¡">
+	<input type="button" value="ëª©ë¡" onclick="location.href='3scoreList'">
 	
 	</form>
 	

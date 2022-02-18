@@ -3,12 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-	<h2>${memberInfo.id }님이 로그인 중입니다.</h2>
+	<h2>게시글 등록이 완료되었습니다.</h2>
+	<a href="boardRegister">추가 작성하기</a>
+	<a href="boardList">게시글 리스트</a>
+
 
 </body>
 </html>

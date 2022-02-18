@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,10 +9,10 @@
 <body>
 
 
-	<h3>ÀüÅëÀûÀÎ ¹æ¹ý</h3>
+	<h3>ì „í†µì ì¸ ë°©ë²•</h3>
 	
 	<h2>
-	È¸¿ø Á¤º¸ Ã³¸®
+	íšŒì› ì •ë³´ ì²˜ë¦¬
 	</h2>
 	<form action="memlogin" method="post">
 	 ID : <input type="text" name="memid">
@@ -22,10 +22,10 @@
 	
 	<hr>
 	
-	<h3> ¾î³ëÅ×ÀÌ¼ÇÀ» ÀÌ¿ëÇÑ ¹æ¹ý</h3>
+	<h3> ì–´ë…¸í…Œì´ì…˜ì„ ì´ìš©í•œ ë°©ë²•</h3>
 	
 	<h2>
-	È¸¿ø Á¤º¸ Ã³¸®
+	íšŒì› ì •ë³´ ì²˜ë¦¬
 	</h2>
 	<form action="memlogin2" method="post">
 	 ID : <input type="text" name="memid">
@@ -35,10 +35,10 @@
 	
 	<hr>
 	
-	<h3>Ä¿¸Çµå¸¦ ÀÌ¿ëÇÑ ¹æ½Ä</h3>
+	<h3>ì»¤ë§¨ë“œë¥¼ ì´ìš©í•œ ë°©ì‹</h3>
 	
 	<h2>
-	È¸¿ø Á¤º¸ Ã³¸®
+	íšŒì› ì •ë³´ ì²˜ë¦¬
 	</h2>
 	
 	<form action="memlogin3" method="post">

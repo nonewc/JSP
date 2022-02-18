@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,13 +7,13 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<h2>È¸¿ø °¡ÀÔ (È­¸é URL ¿äÃ» : ÄÁÆĞ½º/service/member_tx01)</h2>
+	<h2>íšŒì› ê°€ì… (í™”ë©´ URL ìš”ì²­ : ì»¨íŒ¨ìŠ¤/service/member_tx01)</h2>
 	
 	<form action="join" method="post">
 	 ID : <input type="text" name="id"><br>
 	 PW : <input type="password" name="pw"><br>
 	 name : <input type="text" name="name"><br>
-		<input type="submit" value="È¸¿ø°¡ÀÔ">
+		<input type="submit" value="íšŒì›ê°€ì…">
 	</form>
 
 
