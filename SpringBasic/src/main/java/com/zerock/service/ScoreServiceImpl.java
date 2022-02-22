@@ -1,6 +1,8 @@
 package com.zerock.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -10,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.zerock.command.ScoreVO;
 import com.zerock.dao.ScoreDAO;
 import com.zerock.dao.ScoreDAOImpl;
+import com.zerock.mapper.ScoreMapper;
 
 //@Componenet	// 잘됨
 //@Componenet("scoreService")	//잘됨, 해당 클래스를 컨테이너에 빈으로 생성하겠다는 어노테이션
@@ -19,6 +22,53 @@ import com.zerock.dao.ScoreDAOImpl;
 @Service("scoreService")
 public class ScoreServiceImpl implements ScoreService {
 
+	@Autowired
+	private ScoreMapper mapper;
+	
+	@Override
+	public void scoreRegist(ScoreVO vo)  {
+	
+		try {
+			
+			mapper.insert(vo);
+			
+
+			
+			Map<String,String> map = new HashMap<>();
+			
+			map.put("p1", vo.getName());
+			map.put("p2", vo.getKor());
+			map.put("p3", vo.getEng());
+			map.put("p4", vo.getMath());
+			
+			mapper.insert2(map);
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	
+	}
+	
+	
+	@Override
+	public ArrayList<ScoreVO> scoreResult() {
+		
+		ArrayList<ScoreVO> DB = mapper.select();
+		return DB;
+	}
+	
+	@Override
+	public void scoreDelete(String number) {
+		
+		mapper.delete(number);
+		
+	}
+	
+	
+	
+	
 //	ArrayList<ScoreVO> list = new ArrayList<ScoreVO>();
 //	
 //	
@@ -61,37 +111,37 @@ public class ScoreServiceImpl implements ScoreService {
 //	ScoreDAO scoreDAO;
 	
 	//3nd : 자동 의존성 주입을 어노테이션을 이용하여
-	@Autowired
-	ScoreDAO scoreDAO;
-	
-	@Override
-	public void scoreRegist(ScoreVO vo) {
-		
-		System.out.println("------- 서비스 계층 -------");
-		System.out.println(vo.getName());
-		System.out.println(vo.getKor());
-		System.out.println(vo.getEng());
-		System.out.println(vo.getMath());
-		
-		scoreDAO.scoreInsert(vo);	//점수 입력 메서드 호출
-		
-	}
-	
-	@Override
-	public ArrayList<ScoreVO> scoreResult() {
-
-		ArrayList<ScoreVO> DB = scoreDAO.scoreSelect();	//점수 결과 메서드 호출
-		return DB;
-		
-	}
-	
-	
-	@Override
-	public void scoreDelete(String num) {
-		
-		scoreDAO.scoreDelete(num); 	//점수 삭제 메서드 호출
-		
-	}
+//	@Autowired
+//	ScoreDAO scoreDAO;
+//	
+//	@Override
+//	public void scoreRegist(ScoreVO vo) {
+//		
+//		System.out.println("------- 서비스 계층 -------");
+//		System.out.println(vo.getName());
+//		System.out.println(vo.getKor());
+//		System.out.println(vo.getEng());
+//		System.out.println(vo.getMath());
+//		
+//		scoreDAO.scoreInsert(vo);	//점수 입력 메서드 호출
+//		
+//	}
+//	
+//	@Override
+//	public ArrayList<ScoreVO> scoreResult() {
+//
+//		ArrayList<ScoreVO> DB = scoreDAO.scoreSelect();	//점수 결과 메서드 호출
+//		return DB;
+//		
+//	}
+//	
+//	
+//	@Override
+//	public void scoreDelete(String num) {
+//		
+//		scoreDAO.scoreDelete(num); 	//점수 삭제 메서드 호출
+//		
+//	}
 	
 
 }

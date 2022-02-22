@@ -27,7 +27,7 @@
 	<h3>커맨트를 이용한 방식</h3>
 	<form action="/service/memlogin3" method="post">
 			pw : <input type="password" name="pw"><br>
-		ID : <input type="text" name="id"><br>
+			ID : <input type="text" name="id"><br>
 
 	    <input type="submit" value="login">		
 	</form>

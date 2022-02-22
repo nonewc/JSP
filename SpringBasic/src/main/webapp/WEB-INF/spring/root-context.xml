@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd">
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig"> 
 		<property name="driverClassName" value="oracle.jdbc.OracleDriver"></property> 
@@ -17,6 +23,23 @@
 	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> 
 		<property name="dataSource" ref="dataSource"></property>
 	 </bean>
+	 
+	 <!-- MyBatis의 핵심 객체 SqlSessionFactory를 추가 -->
+	 <!-- 
+	 	세션 팩토리는 내부적으로 DB와 연결해주고, pstmt의 SQL문 바인딩 처리, 반복적인 close() 작업 또한 처리하여
+	 	개발자의 코드량을 줄이며 효율적으로 작업을 할 수 있게 도움을 준다.
+	  -->
+	 <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	 	<property name="dataSource" ref="dataSource"></property>
+	 	<!-- <property name="mapperLocations" value="classpath:com/zerock/mapper/**/*.xml"></property>-->
+	 </bean>
+	 
+	 <!-- MyBatis의 테스트 매퍼 스캔 -->
+	 <mybatis-spring:scan base-package="com.zerock.testmapper"/>
+	 
+	 <!-- MyBatis의 맵퍼 패키지를 생성하고 스캔하는 태그 -->
+	 <mybatis-spring:scan base-package="com.zerock.mapper"/>
+	 
 	
 
 		
